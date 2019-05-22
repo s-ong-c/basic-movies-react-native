@@ -10,6 +10,8 @@ import MovieItem from '../../components/MovieItem';
 const Container = styled.ScrollView`
     background-color: ${BG_COLOR};
 `;
+
+
 const MoviesPresenter = ({loading, upcoming, popular, nowPlaying})  =>
     loading ?(
      <Loader /> 
@@ -17,7 +19,7 @@ const MoviesPresenter = ({loading, upcoming, popular, nowPlaying})  =>
         <Container>
           {nowPlaying ? <MovieSlider movies={nowPlaying} />: null }
           {upcoming ? (
-              <Section movies={upcoming} title="upcoming Movies">
+              <Section movies={upcoming} title="Upcoming Movies">
                 {upcoming
                     .filter(movie => movie.poster_path !== null)
                     .map(movie => (
@@ -30,7 +32,24 @@ const MoviesPresenter = ({loading, upcoming, popular, nowPlaying})  =>
                         />
                     ))}
                 </Section>
-        ): null }
+            ): null } 
+        {popular ? (
+              <Section horizontal={false} movies={popular} title="Popular Movies">
+                {popular
+                    .filter(movie => movie.poster_path !== null)
+                    .map(movie => (
+                        <MovieItem 
+                            horizontal={true}
+                            key={movie.id}
+                            id={movie.id} 
+                            posterPhoto={movie.poster_path} 
+                            title={movie.title} 
+                            overview={movie.overview}
+                            voteAvg={movie.vote_average}
+                        />
+                    ))}
+                </Section>
+            ): null }
         </Container>
     );
 

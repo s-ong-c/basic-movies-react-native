@@ -46,6 +46,21 @@ const TVPresenter = ({ loading, popular, airingThisWeek, airingToday }) =>
                     />
                     ))}
                 </Section>
+            ) : null}            
+            {popular ? (
+                <Section title="Popular">
+                {popular
+                    .filter(tv => tv.poster_path !== null)
+                    .map(tv => (
+                    <MovieItem
+                        key={tv.id}
+                        id={tv.id}
+                        posterPhoto={tv.poster_path}
+                        title={tv.name}
+                        voteAvg={tv.vote_average}
+                    />
+                    ))}
+                </Section>
             ) : null}
         </Container>
     );

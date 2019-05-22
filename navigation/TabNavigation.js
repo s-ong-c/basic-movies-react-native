@@ -29,8 +29,8 @@ const TabNavigation = createBottomTabNavigator({
                 )
             }
         },
-        Serach:{
-            screen: createStack(SearchScreen, 'Serach'),
+        Search:{
+            screen: createStack(SearchScreen, 'Search'),
             navigationOptions: {
             tabBarIcon: ({focused}) => (
                 <TabBarIcon 
@@ -48,6 +48,7 @@ const TabNavigation = createBottomTabNavigator({
         // TV: TVScreen,
         // Search: SearchScreen
     }, {
+        initialRouteName: 'Search',
         tabBarOptions: {
             showLabel: false,
             style: {
